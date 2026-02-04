@@ -1,21 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Valentine 💖</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      background: #ffd6e8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .card {
+      background: white;
+      width: 320px;
+      padding: 35px 25px;
+      border-radius: 25px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      position: relative;
+    }
+
+    h1 {
+      font-size: 20px;
+      color: #ff4d88;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 17px;
+      margin-bottom: 25px;
+    }
+
+    button {
+      padding: 10px 22px;
+      border: none;
+      border-radius: 20px;
+      font-size: 15px;
+      cursor: pointer;
+      margin: 6px;
+    }
+
+    .yes {
+      background: #ff4d88;
+      color: white;
+    }
+
+    .no {
+      background: #ffe6ef;
+      position: absolute;
+    }
+  </style>
+</head>
+
 <body>
+
+  <!-- PAGE 1 -->
   <div class="card" id="page1">
     <h1>Hey Harshu… 🥺</h1>
     <p>I have something to ask you 👉👈</p>
-    <button id="yes" onclick="goToPage(2)">Okay 💕</button>
+    <button class="yes" onclick="goToPage(2)">Okay 💕</button>
   </div>
 
+  <!-- PAGE 2 -->
   <div class="card" id="page2" style="display:none;">
     <h1>Do you love me? 🥹💖</h1>
-    <button id="yes" onclick="goToPage(3)">Yes 💕</button>
-    <button id="no" onmouseover="moveNo(this)">No 🙈</button>
+    <button class="yes" onclick="goToPage(3)">Yes 💕</button>
+    <button class="no" id="no1" onmouseover="moveNo('no1')">No 🙈</button>
   </div>
 
+  <!-- PAGE 3 -->
   <div class="card" id="page3" style="display:none;">
     <h1>I LOVE YOU TOO SO MUCH 💖😭</h1>
     <p><b>Harshu, will you be my Valentine? 💘</b></p>
-    <button id="yes" onclick="finalYes()">Yes 💍</button>
-    <button id="no" onmouseover="moveNo(this)">No 🙈</button>
+    <button class="yes" onclick="finalYes()">Yes 💍</button>
+    <button class="no" id="no2" onmouseover="moveNo('no2')">No 🙈</button>
   </div>
 
   <script>
@@ -26,15 +89,17 @@
       document.getElementById("page" + page).style.display = "block";
     }
 
-    function moveNo(btn) {
-      btn.style.position = "absolute";
-      btn.style.top = Math.random() * 80 + "%";
-      btn.style.left = Math.random() * 80 + "%";
+    function moveNo(id) {
+      const btn = document.getElementById(id);
+      btn.style.top = Math.random() * 70 + "px";
+      btn.style.left = Math.random() * 180 + "px";
     }
 
     function finalYes() {
       document.body.innerHTML =
-        "<h1 style='color:#ff4d88;text-align:center;margin-top:40vh;'>YAYYYY 💖🥹</h1>";
+        "<h1 style='color:#ff4d88;text-align:center;'>YAYYYY 💖🥹</h1>";
     }
   </script>
+
 </body>
+</html>
