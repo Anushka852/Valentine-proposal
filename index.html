@@ -17,11 +17,11 @@
 
     .card {
       background: white;
-      width: 320px;
+      width: 330px;
       padding: 35px 25px;
       border-radius: 25px;
       text-align: center;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.12);
       position: relative;
     }
 
@@ -32,7 +32,7 @@
     }
 
     p {
-      font-size: 17px;
+      font-size: 16px;
       margin-bottom: 25px;
     }
 
@@ -69,12 +69,22 @@
   <!-- PAGE 2 -->
   <div class="card" id="page2" style="display:none;">
     <h1>Do you love me? 🥹💖</h1>
-    <button class="yes" onclick="goToPage(3)">Yes 💕</button>
-    <button class="no" id="no1" onmouseover="moveNo('no1')">No 🙈</button>
+    <button class="yes" onclick="goToPage(4)">Yes 💕</button>
+    <button class="no" id="no1" onclick="noTrap()">No 🙈</button>
   </div>
 
-  <!-- PAGE 3 -->
+  <!-- TRAP PAGE -->
   <div class="card" id="page3" style="display:none;">
+    <h1>😌 Oops!</h1>
+    <p>
+      Ab tum fas chuke ho <b>lifetime</b> ke liye 💘<br><br>
+      No ka option nahi hai 😏
+    </p>
+    <button class="yes" onclick="goToPage(2)">Okay 😳</button>
+  </div>
+
+  <!-- PAGE 4 -->
+  <div class="card" id="page4" style="display:none;">
     <h1>I LOVE YOU TOO SO MUCH 💖😭</h1>
     <p><b>Harshu, will you be my Valentine? 💘</b></p>
     <button class="yes" onclick="finalYes()">Yes 💍</button>
@@ -82,11 +92,21 @@
   </div>
 
   <script>
+    let noClickedOnce = false;
+
     function goToPage(page) {
       document.getElementById("page1").style.display = "none";
       document.getElementById("page2").style.display = "none";
       document.getElementById("page3").style.display = "none";
+      document.getElementById("page4").style.display = "none";
       document.getElementById("page" + page).style.display = "block";
+    }
+
+    function noTrap() {
+      if (!noClickedOnce) {
+        noClickedOnce = true;
+        goToPage(3);
+      }
     }
 
     function moveNo(id) {
